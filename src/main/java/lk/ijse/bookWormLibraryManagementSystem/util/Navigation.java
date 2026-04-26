@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.transform.Scale;
 import lk.ijse.bookWormLibraryManagementSystem.controller.admin.AdminGlobalFormController;
 import lk.ijse.bookWormLibraryManagementSystem.controller.user.UserGlobalFormController;
 
@@ -24,14 +25,43 @@ public class Navigation {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
 
-        stage.setMaximized(true);
+        if (path.equals("adminGlobalForm.fxml")) {
+            stage.setMaximized(true);
+        } else {
+            stage.setMaximized(false);
+            stage.setWidth(1100);
+            stage.setHeight(680);
+            stage.centerOnScreen();
+        }
+
         stage.show();
     }
 
     public static void switchPaging(Pane pane, String path) throws IOException {
         pane.getChildren().clear();
+
         FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/view/" + path));
         Parent root = loader.load();
+
+        root.setLayoutX(0);
+        root.setLayoutY(0);
+
+        double scaleValue = 1.0;
+
+        // Dashboard admin seulement
+        if (path.equals("adminDashboardForm.fxml")) {
+            scaleValue = 0.85;
+        }
+        // Toutes les grandes pages admin/user, sauf popups et sign in
+        else if (!path.contains("SignIn")) {
+            scaleValue = 0.75;
+        }
+
+        if (scaleValue != 1.0) {
+            Scale scale = new Scale(scaleValue, scaleValue, 0, 0);
+            root.getTransforms().add(scale);
+        }
+
         pane.getChildren().add(root);
     }
 

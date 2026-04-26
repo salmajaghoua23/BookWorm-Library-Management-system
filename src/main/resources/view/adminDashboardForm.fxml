@@ -17,8 +17,8 @@
            fx:controller="lk.ijse.bookWormLibraryManagementSystem.controller.admin.AdminDashboardFormController">
 
     <Pane fx:id="rootPane"
-          prefHeight="700.0"
-          prefWidth="800.0"
+          prefHeight="905.0"
+          prefWidth="1522.0"
           style="-fx-background-color: #F2F2F2;">
 
      <children>
