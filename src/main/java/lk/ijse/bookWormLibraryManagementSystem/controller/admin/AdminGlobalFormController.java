@@ -324,6 +324,13 @@ public class AdminGlobalFormController implements Initializable {
         dashboardButtonSelected = true;
         btnSelected(dashboardPane, lblDashboard, imgDashboard, "dashboardIconBlack.png");
         pagingPane.setVisible(true);
+
+        // Empêche le dashboard de dépasser sur la sidebar
+        javafx.scene.shape.Rectangle clip = new javafx.scene.shape.Rectangle();
+        clip.widthProperty().bind(pagingPane.widthProperty());
+        clip.heightProperty().bind(pagingPane.heightProperty());
+        pagingPane.setClip(clip);
+
         setAdminName();
         setTimeLine();
         lblDate.setText(DateTimeUtil.dateNowFormatted());

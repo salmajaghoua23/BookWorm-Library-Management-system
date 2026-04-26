@@ -109,10 +109,10 @@ public class AdminSignUpFormController {
             isValid = false;
         }
 
-        if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
+        /*if (RegExPatterns.contactNoPattern(txtContactNo.getText())) {
             lblContactNoAlert.setText("Invalid Contact No!!");
             isValid = false;
-        }
+        }*/
 
         if (RegExPatterns.emailPattern(txtEmail.getText())) {
             lblEmailAlert.setText("Invalid Email!!");

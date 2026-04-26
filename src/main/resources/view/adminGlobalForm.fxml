@@ -133,7 +133,14 @@
          </children>
       </Pane>
       <Pane fx:id="pagingPane" layoutX="223.0" layoutY="77.0" prefHeight="905.0" prefWidth="1522.0" visible="false" />
-      <ImageView fx:id="imgTransparent" fitHeight="982.0" fitWidth="1795.0" pickOnBounds="true" preserveRatio="true" visible="false">
+       <ImageView fx:id="imgTransparent"
+                  layoutX="223.0"
+                  layoutY="77.0"
+                  fitHeight="905.0"
+                  fitWidth="1522.0"
+                  pickOnBounds="true"
+                  preserveRatio="false"
+                  visible="false">
          <image>
             <Image url="@../assests/img/transparentImage.png" />
          </image>

@@ -17,10 +17,14 @@ public class Navigation {
     private static Stage stage;
 
     public static void switchNavigation(String path, ActionEvent event) throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(Navigation.class.getResource("/view/" + path)));
+        Parent root = FXMLLoader.load(Navigation.class.getResource("/view/" + path));
+
+        Scene scene = new Scene(root);
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.centerOnScreen();
+
+        stage.setMaximized(true);
         stage.show();
     }
 

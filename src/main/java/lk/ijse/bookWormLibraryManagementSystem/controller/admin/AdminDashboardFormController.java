@@ -42,7 +42,8 @@ public class AdminDashboardFormController implements Initializable {
 
     @FXML
     private Pane pieChartPane;
-
+    @FXML
+    private Pane rootPane;
     DashboardService dashboardService =
             (DashboardService) ServiceFactory.getInstance()
                     .getService(ServiceFactory.ServiceTypes.DASHBOARD);
@@ -112,7 +113,7 @@ public class AdminDashboardFormController implements Initializable {
         pieChart.setLabelsVisible(false);
         pieChart.setLegendVisible(false);
         pieChart.setClockwise(true);
-        pieChart.setPrefSize(630, 630);
+        pieChart.setPrefSize(100, 100);
 
         pieChartPane.getChildren().add(pieChart);
     }
@@ -146,6 +147,9 @@ public class AdminDashboardFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setData();
+        // 🔥 Zoom global
+        rootPane.setScaleX(0.7);
+        rootPane.setScaleY(0.7);
     }
 
 }
