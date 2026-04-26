@@ -50,7 +50,7 @@ public class Navigation {
 
         // Dashboard admin seulement
         if (path.equals("adminDashboardForm.fxml")) {
-            scaleValue = 0.85;
+            scaleValue = 0.80;
         }
         // Toutes les grandes pages admin/user, sauf popups et sign in
         else if (!path.contains("SignIn")) {
