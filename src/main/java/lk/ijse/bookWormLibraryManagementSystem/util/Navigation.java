@@ -25,7 +25,7 @@ public class Navigation {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
 
-        if (path.equals("adminGlobalForm.fxml")) {
+        if (path.equals("adminGlobalForm.fxml") || path.equals("userGlobalForm.fxml")) {
             stage.setMaximized(true);
         } else {
             stage.setMaximized(false);
@@ -49,7 +49,7 @@ public class Navigation {
         double scaleValue = 1.0;
 
         // Dashboard admin seulement
-        if (path.equals("adminDashboardForm.fxml")) {
+        if (path.equals("adminDashboardForm.fxml") || path.equals("userGlobalForm.fxml")) {
             scaleValue = 0.80;
         }
         // Toutes les grandes pages admin/user, sauf popups et sign in
