@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import lk.ijse.bookWormLibraryManagementSystem.dto.BookDto;
 import lk.ijse.bookWormLibraryManagementSystem.service.ServiceFactory;
 import lk.ijse.bookWormLibraryManagementSystem.service.custom.BookService;
+import lk.ijse.bookWormLibraryManagementSystem.strategy.*;
 import lk.ijse.bookWormLibraryManagementSystem.util.Navigation;
 import lk.ijse.bookWormLibraryManagementSystem.util.RegExPatterns;
 
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class AdminBookManagementFormController implements Initializable {
 
@@ -46,6 +48,7 @@ public class AdminBookManagementFormController implements Initializable {
     private VBox vBoxBookManage;
 
     private List<BookDto> list;
+    private SearchContext searchContext = new SearchContext();
 
     BookService bookService =
             (BookService) ServiceFactory.getInstance()
@@ -79,22 +82,33 @@ public class AdminBookManagementFormController implements Initializable {
     @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException {
         if (validateSearch()) {
-            for (BookDto dto : list) {
-                if (!dto.getStatus().equals("Removed")) {
-                    if (txtSearch.getText().equals(String.valueOf(dto.getId()))
-                            || txtSearch.getText().equalsIgnoreCase(dto.getName())) {
-                        AdminBookManagementBarFormController.bookId = dto.getId();
-                        Navigation.imgPopUpBackground("viewBookPopUpForm.fxml");
-                        txtSearch.clear();
-                        lblSearchAlert.setText(" ");
-                        return;
-                    }
-                }
+
+            // idPattern retourne true = "pas un ID" → donc on inverse avec !
+            if (!RegExPatterns.idPattern(txtSearch.getText())) {
+                searchContext.setStrategy(new SearchByBookId());
+            } else {
+                searchContext.setStrategy(new SearchByBookName());
             }
+
+            List<BookDto> activeBooks = list.stream()
+                    .filter(dto -> !dto.getStatus().equals("Removed"))
+                    .collect(Collectors.toList());
+
+            BookDto found = searchContext.search(txtSearch.getText(), activeBooks);
+
+            if (found != null) {
+                AdminBookManagementBarFormController.bookId = found.getId();
+                Navigation.imgPopUpBackground("viewBookPopUpForm.fxml");
+                txtSearch.clear();
+                lblSearchAlert.setText(" ");
+                return;
+            }
+
+            // Si rien trouvé, afficher l'alerte
+            lblSearchAlert.setText("Invalid Id Or Name!!");
         }
         txtSearch.clear();
     }
-
     private boolean validateSearch() {
         if (validateName() & validateId()) {
             lblSearchAlert.setText("Invalid Id Or Name!!");
