@@ -14,6 +14,9 @@ import lk.ijse.bookWormLibraryManagementSystem.dto.TransactionDto;
 import lk.ijse.bookWormLibraryManagementSystem.projection.AdminProjection;
 import lk.ijse.bookWormLibraryManagementSystem.service.ServiceFactory;
 import lk.ijse.bookWormLibraryManagementSystem.service.custom.DashboardService;
+import lk.ijse.bookWormLibraryManagementSystem.state.TransactionContext;
+import lk.ijse.bookWormLibraryManagementSystem.state.TransactionState;
+import lk.ijse.bookWormLibraryManagementSystem.state.TransactionStateFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -121,22 +124,20 @@ public class AdminDashboardFormController implements Initializable {
 
     /** Add data for the Pie Chart */
     private ObservableList<PieChart.Data> addPieChartData() {
-        int totalBorrowedBookCount = 0;
-        int totalReturnedBookCount = 0;
+        TransactionContext context = new TransactionContext();
         List<TransactionDto> allTransactions = dashboardService.getAllTransactions();
+
         for (TransactionDto dto : allTransactions) {
-            if (dto.getTransactionType().equals("borrow")) {
-                totalBorrowedBookCount += 1;
-            }
-            if (dto.getTransactionType().equals("return")) {
-                totalReturnedBookCount += 1;
-            }
+            TransactionState state = TransactionStateFactory.fromType(dto.getTransactionType());
+            state.process(context);  // plus de if/else String !
         }
+
         return FXCollections.observableArrayList(
-                new PieChart.Data("Total Borrowed Books", totalBorrowedBookCount),
-                new PieChart.Data("Total Returned Books", totalReturnedBookCount)
+                new PieChart.Data("Total Borrowed Books", context.getBorrowCount()),
+                new PieChart.Data("Total Returned Books", context.getReturnCount())
         );
     }
+
 
     private void setData() {
         setLabelValues();
