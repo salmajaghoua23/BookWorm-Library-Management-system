@@ -20,7 +20,7 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public void update(Book entity) {
-        session.update(entity);
+        session.merge(entity);
     }
 
     @Override

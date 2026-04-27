@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.ijse.bookWormLibraryManagementSystem.command.BorrowCommand;
+import lk.ijse.bookWormLibraryManagementSystem.command.CommandHistory;
 import lk.ijse.bookWormLibraryManagementSystem.dto.BookDto;
 import lk.ijse.bookWormLibraryManagementSystem.dto.TransactionDto;
 import lk.ijse.bookWormLibraryManagementSystem.service.ServiceFactory;
@@ -47,7 +49,7 @@ public class UserBorrowBookConfirmPopUpFormController implements Initializable {
 
     @FXML
     private VBox vBox;
-
+    private CommandHistory commandHistory = new CommandHistory();
     TransactionService transactionService =
             (TransactionService) ServiceFactory.getInstance()
                     .getService(ServiceFactory.ServiceTypes.TRANSACTION);
@@ -64,6 +66,10 @@ public class UserBorrowBookConfirmPopUpFormController implements Initializable {
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
+        System.out.println("=== UNDO lancé ===");
+        boolean undone = commandHistory.undoLast();
+        System.out.println("Undo réussi : " + undone);
+
         UserBorrowBooksFormController.getInstance().borrowedBooks.clear();
         UserBorrowBooksFormController.getInstance().allBookId();
         Navigation.closeUserPopUpLargePane();
@@ -87,11 +93,16 @@ public class UserBorrowBookConfirmPopUpFormController implements Initializable {
         transactionDto.setDueDate(lblDueDate.getText());
         transactionDto.setUser(UserSignInFormController.user);
 
-        if (transactionService.saveTransaction(transactionDto)) {
+        BorrowCommand cmd = new BorrowCommand(transactionService, transactionDto);
+        boolean success = commandHistory.execute(cmd);
+
+        System.out.println("=== COMMAND executée ===");
+        System.out.println("Dernière action : " + commandHistory.getLastDescription());
+
+        if (success) {
             Navigation.closeUserPopUpLargePane();
             UserBorrowBooksFormController.getInstance().borrowedBooks.clear();
             UserBorrowBooksFormController.getInstance().allBookId();
-            //AdminBorrowedBookFormController.getInstance().allBorrowedTransactionId();
         } else {
             System.out.println("Unable to save transaction!");
         }
