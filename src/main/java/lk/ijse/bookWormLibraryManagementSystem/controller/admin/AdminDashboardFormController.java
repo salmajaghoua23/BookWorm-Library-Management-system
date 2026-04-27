@@ -10,6 +10,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.ijse.bookWormLibraryManagementSystem.decorator.LoggedDashboardService;
 import lk.ijse.bookWormLibraryManagementSystem.dto.TransactionDto;
 import lk.ijse.bookWormLibraryManagementSystem.observer.*;
 import lk.ijse.bookWormLibraryManagementSystem.projection.AdminProjection;
@@ -47,9 +48,11 @@ public class AdminDashboardFormController implements Initializable {
     private Pane pieChartPane;
     @FXML
     private Pane rootPane;
-    DashboardService dashboardService =
+    DashboardService dashboardService = new LoggedDashboardService(
             (DashboardService) ServiceFactory.getInstance()
-                    .getService(ServiceFactory.ServiceTypes.DASHBOARD);
+                    .getService(ServiceFactory.ServiceTypes.DASHBOARD)
+    );
+
 
     private void setLabelValues() {
         lblTotalUserCount.setText("0" + dashboardService.getAllUserCount());
