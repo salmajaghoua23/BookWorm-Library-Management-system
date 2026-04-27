@@ -140,14 +140,14 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     private Transaction convertToEntity(TransactionDto dto) {
-        Transaction entity = new Transaction();
-        entity.setId(dto.getId());
-        entity.setTransactionType(dto.getTransactionType());
-        entity.setBookQty(dto.getBookQty());
-        entity.setDueDate(dto.getDueDate());
-        entity.setDateAndTime(dto.getDateAndTime());
-        entity.setUser(convertToUserEntity(dto.getUser()));
-        return entity;
+            return new Transaction.Builder()
+                    .id(dto.getId())
+                    .transactionType(dto.getTransactionType())
+                    .bookQty(dto.getBookQty())
+                    .dueDate(dto.getDueDate())
+                    .dateAndTime(dto.getDateAndTime())
+                    .user(convertToUserEntity(dto.getUser()))
+                    .build();
     }
 
     private TransactionDto convertToDto(Transaction entity) {
@@ -163,14 +163,15 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     private User convertToUserEntity(UserDto dto) {
-        User entity = new User();
-        entity.setId(dto.getId());
-        entity.setName(dto.getName());
-        entity.setEmail(dto.getEmail());
-        entity.setUsername(dto.getUsername());
-        entity.setPassword(dto.getPassword());
-        entity.setAdmin(convertToAdminEntity(dto.getAdmin()));
-        return entity;
+        User user = new User.Builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .email(dto.getEmail())
+                .username(dto.getUsername())
+                .password(dto.getPassword())
+                .admin(convertToAdminEntity(dto.getAdmin()))
+                .build();
+        return user;
     }
 
     private UserDto convertToUserDto(User entity) {
@@ -196,13 +197,14 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     private Admin convertToAdminEntity(AdminDto dto) {
-        Admin admin = new Admin();
-        admin.setId(dto.getId());
-        admin.setName(dto.getName());
-        admin.setContactNo(dto.getContactNo());
-        admin.setEmail(dto.getEmail());
-        admin.setUsername(dto.getUsername());
-        admin.setPassword(dto.getPassword());
+        Admin admin = new Admin.Builder()
+                .id(dto.getId())
+                .name(dto.getName())
+                .contactNo(dto.getContactNo())
+                .email(dto.getEmail())
+                .username(dto.getUsername())
+                .password(dto.getPassword())
+                .build();
         return admin;
     }
 

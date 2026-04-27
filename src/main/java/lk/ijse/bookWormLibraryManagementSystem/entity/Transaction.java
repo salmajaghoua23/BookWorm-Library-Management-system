@@ -51,5 +51,18 @@ public class Transaction {
             mappedBy = "transaction"
     )
     private List<TransactionDetail> transactionDetails = new ArrayList<>();
+    // ── Builder ──
+    public static class Builder {
+        private final Transaction transaction = new Transaction();
+
+        public Builder id(int id)                          { transaction.setId(id);                      return this; }
+        public Builder transactionType(String type)        { transaction.setTransactionType(type);       return this; }
+        public Builder bookQty(int bookQty)                { transaction.setBookQty(bookQty);            return this; }
+        public Builder dueDate(String dueDate)             { transaction.setDueDate(dueDate);            return this; }
+        public Builder dateAndTime(Timestamp dateAndTime)  { transaction.setDateAndTime(dateAndTime);    return this; }
+        public Builder user(User user)                     { transaction.setUser(user);                  return this; }
+
+        public Transaction build() { return transaction; }
+    }
 
 }

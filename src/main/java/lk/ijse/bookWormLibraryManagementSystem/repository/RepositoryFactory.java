@@ -1,17 +1,23 @@
 package lk.ijse.bookWormLibraryManagementSystem.repository;
 
 import lk.ijse.bookWormLibraryManagementSystem.repository.custom.impl.*;
-
+import java.util.*;
 public class RepositoryFactory {
 
-    private static RepositoryFactory repositoryFactory;
+    private static volatile RepositoryFactory repositoryFactory;
+    private final Map<RepositoryTypes, SuperRepository> cache = new EnumMap<>(RepositoryTypes.class);
 
     private RepositoryFactory() {}
 
     public static RepositoryFactory getInstance() {
-        return repositoryFactory == null
-                ? repositoryFactory = new RepositoryFactory()
-                : repositoryFactory;
+        if (repositoryFactory == null) {
+            synchronized (RepositoryFactory.class) {
+                if (repositoryFactory == null) {
+                    repositoryFactory = new RepositoryFactory();
+                }
+            }
+        }
+        return repositoryFactory;
     }
 
     public enum RepositoryTypes {
@@ -19,22 +25,23 @@ public class RepositoryFactory {
     }
 
     public SuperRepository getRepository(RepositoryTypes types) {
-        switch (types) {
-            case ADMIN:
-                return new AdminRepositoryImpl();
-            case BOOK:
-                return new BookRepositoryImpl();
-            case BRANCH:
-                return new BranchRepositoryImpl();
-            case USER:
-                return new UserRepositoryImpl();
-            case TRANSACTION:
-                return new TransactionRepositoryImpl();
-            case TRANSACTION_DETAIL:
-                return new TransactionDetailRepositoryImpl();
-            default:
-                return null;
-        }
+        return cache.computeIfAbsent(types, t -> {
+            switch (types) {
+                case ADMIN:
+                    return new AdminRepositoryImpl();
+                case BOOK:
+                    return new BookRepositoryImpl();
+                case BRANCH:
+                    return new BranchRepositoryImpl();
+                case USER:
+                    return new UserRepositoryImpl();
+                case TRANSACTION:
+                    return new TransactionRepositoryImpl();
+                case TRANSACTION_DETAIL:
+                    return new TransactionDetailRepositoryImpl();
+                default:
+                    return null;
+            }
+        });
     }
-
 }

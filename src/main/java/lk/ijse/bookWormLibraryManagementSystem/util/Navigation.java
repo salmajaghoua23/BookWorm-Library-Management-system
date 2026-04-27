@@ -54,7 +54,7 @@ public class Navigation {
         }
         // Toutes les grandes pages admin/user, sauf popups et sign in
         else if (!path.contains("SignIn")) {
-            scaleValue = 0.75;
+            scaleValue = 0.70;
         }
 
         if (scaleValue != 1.0) {

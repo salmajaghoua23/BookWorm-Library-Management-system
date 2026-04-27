@@ -67,5 +67,19 @@ public class Admin {
             mappedBy = "admin"
     )
     private List<Book> books = new ArrayList<>();
+    // ── Builder ──
+    public static class Builder {
+        private final Admin admin = new Admin();
+
+        public Builder id(int id)               { admin.setId(id);           return this; }
+        public Builder name(Name name)         { admin.setName(name);       return this; }
+        public Builder contactNo(String c)       { admin.setContactNo(c);     return this; }
+        public Builder email(String email)       { admin.setEmail(email);     return this; }
+        public Builder username(String username) { admin.setUsername(username); return this; }
+        public Builder password(String password) { admin.setPassword(password); return this; }
+
+        public Admin build() { return admin; }
+    }
+
 
 }

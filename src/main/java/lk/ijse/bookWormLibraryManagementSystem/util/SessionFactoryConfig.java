@@ -23,9 +23,15 @@ public class SessionFactoryConfig {
     }
 
     public static SessionFactoryConfig getInstance() {
-        return factoryConfig == null
-                ? factoryConfig = new SessionFactoryConfig()
-                : factoryConfig;
+        if (factoryConfig == null) {
+            synchronized (SessionFactoryConfig.class) {
+                if (factoryConfig== null) {
+                    factoryConfig = new SessionFactoryConfig();
+                }
+            }
+        }
+        return factoryConfig;
+
     }
 
     public Session getSession() {

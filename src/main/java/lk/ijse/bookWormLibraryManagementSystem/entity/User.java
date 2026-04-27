@@ -1,5 +1,6 @@
 package lk.ijse.bookWormLibraryManagementSystem.entity;
 
+import lk.ijse.bookWormLibraryManagementSystem.embedded.Name;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,5 +50,17 @@ public class User {
             mappedBy = "user"
     )
     private List<Transaction> transactions = new ArrayList<>();
+    // ── Builder ──
+    public static class Builder {
+        private final User user = new User();
+
+        public User.Builder id(int id)               { user.setId(id);           return this; }
+        public User.Builder name(String name)         { user.setName(name);       return this; }
+        public User.Builder email(String email)       { user.setEmail(email);     return this; }
+        public User.Builder username(String username) { user.setUsername(username); return this; }
+        public User.Builder password(String password) { user.setPassword(password); return this; }
+        public Builder admin(Admin admin)             { user.setAdmin(admin); return this; }
+        public User build() { return user; }
+    }
 
 }
