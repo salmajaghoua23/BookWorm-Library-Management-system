@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="981.0" prefWidth="1745.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookWormLibraryManagementSystem.controller.admin.AdminGlobalFormController">
    <children>
       <JFXButton layoutX="-29.0" layoutY="-3.0" text=" " />
-      <Pane prefHeight="981.0" prefWidth="222.0" style="-fx-background-color: black;">
+      <Pane prefHeight="981.0" prefWidth="222.0" style="-fx-background-color: green;">
          <children>
             <ImageView fitHeight="90.73" fitWidth="152.38" layoutX="35.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                <image>

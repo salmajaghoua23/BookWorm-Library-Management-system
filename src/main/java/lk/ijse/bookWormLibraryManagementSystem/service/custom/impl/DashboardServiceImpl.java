@@ -13,6 +13,9 @@ import lk.ijse.bookWormLibraryManagementSystem.repository.custom.impl.*;
 import lk.ijse.bookWormLibraryManagementSystem.service.custom.BookService;
 import lk.ijse.bookWormLibraryManagementSystem.service.custom.DashboardService;
 import lk.ijse.bookWormLibraryManagementSystem.service.custom.UserService;
+import lk.ijse.bookWormLibraryManagementSystem.template.CountBooksTemplate;
+import lk.ijse.bookWormLibraryManagementSystem.template.CountBranchesTemplate;
+import lk.ijse.bookWormLibraryManagementSystem.template.CountUsersTemplate;
 import lk.ijse.bookWormLibraryManagementSystem.util.SessionFactoryConfig;
 import org.hibernate.Session;
 
@@ -99,44 +102,17 @@ public class DashboardServiceImpl implements DashboardService {
 
     @Override
     public int getAllUserCount() {
-        try {
-            initializeSession();
-            UserRepositoryImpl.setSession(session);
-            return userRepository.getAllUserCount();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        } finally {
-            session.close();
-        }
+        return new CountUsersTemplate(userRepository).execute();
     }
 
     @Override
     public int getAllBookCount() {
-        try {
-            initializeSession();
-            BookRepositoryImpl.setSession(session);
-            return bookRepository.getAllBookCount();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        } finally {
-            session.close();
-        }
+        return new CountBooksTemplate(bookRepository).execute();
     }
 
     @Override
     public int getAllBranchCount() {
-        try {
-            initializeSession();
-            BranchRepositoryImpl.setSession(session);
-            return branchRepository.getAllBranchCount();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        } finally {
-            session.close();
-        }
+        return new CountBranchesTemplate(branchRepository).execute();
     }
 
     private Transaction convertToEntity(TransactionDto dto) {
