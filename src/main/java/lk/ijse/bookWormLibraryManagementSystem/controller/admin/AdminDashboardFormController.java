@@ -11,17 +11,17 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import lk.ijse.bookWormLibraryManagementSystem.dto.TransactionDto;
+import lk.ijse.bookWormLibraryManagementSystem.observer.*;
 import lk.ijse.bookWormLibraryManagementSystem.projection.AdminProjection;
 import lk.ijse.bookWormLibraryManagementSystem.service.ServiceFactory;
 import lk.ijse.bookWormLibraryManagementSystem.service.custom.DashboardService;
-import lk.ijse.bookWormLibraryManagementSystem.state.TransactionContext;
-import lk.ijse.bookWormLibraryManagementSystem.state.TransactionState;
-import lk.ijse.bookWormLibraryManagementSystem.state.TransactionStateFactory;
+import lk.ijse.bookWormLibraryManagementSystem.state.*;
+
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+
 
 public class AdminDashboardFormController implements Initializable {
 
@@ -143,15 +143,25 @@ public class AdminDashboardFormController implements Initializable {
         setLabelValues();
         setPieChart();
         allAdmins();
-        allOverDueBorrowers();
+        //allOverDueBorrowers();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Enregistrer l'observer
+        DashboardEventManager manager = DashboardEventManager.getInstance();
+        manager.addObserver(new OverdueBorrowersUIObserver(vBoxOverDueBorrowers));
+        System.out.println("observer enregistré");
+
         setData();
         // 🔥 Zoom global
         rootPane.setScaleX(0.7);
         rootPane.setScaleY(0.7);
+        // Notifier apres chargement
+        List<TransactionDto> overdue = dashboardService.getAllOverDueBorrowers();
+        overdue.forEach(dto -> manager.notifyOverdue(dto));
+
+
     }
 
 }
