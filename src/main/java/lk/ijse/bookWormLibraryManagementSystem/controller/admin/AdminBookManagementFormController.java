@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import lk.ijse.bookWormLibraryManagementSystem.dto.BookDto;
+import lk.ijse.bookWormLibraryManagementSystem.proxy.BookRepositoryProxy;
+import lk.ijse.bookWormLibraryManagementSystem.proxy.UserRole;
 import lk.ijse.bookWormLibraryManagementSystem.service.ServiceFactory;
 import lk.ijse.bookWormLibraryManagementSystem.service.custom.BookService;
 import lk.ijse.bookWormLibraryManagementSystem.strategy.*;
@@ -50,6 +52,9 @@ public class AdminBookManagementFormController implements Initializable {
     private List<BookDto> list;
     private SearchContext searchContext = new SearchContext();
 
+    //  Déclarer le rôle de cet écran : c'est un admin
+    private final UserRole currentRole = UserRole.ADMIN;
+
     BookService bookService =
             (BookService) ServiceFactory.getInstance()
                     .getService(ServiceFactory.ServiceTypes.BOOK);
@@ -64,9 +69,32 @@ public class AdminBookManagementFormController implements Initializable {
         return controller;
     }
 
+    //  Méthode utilitaire : valide le rôle via le proxy avant toute opération sensible
+    private void checkAccess(String operation) {
+        BookRepositoryProxy proxy = new BookRepositoryProxy(currentRole);
+        // Le proxy lèvera SecurityException si le rôle n'est pas ADMIN
+        // On l'appelle sur une méthode fictive pour déclencher la vérification
+        switch (operation) {
+            case "save"  :
+                proxy.checkPermission(operation);
+                break;// déclenche checkAdmin
+            case "update" :
+                proxy.checkPermission(operation);
+                break;// déclenche checkAdmin
+            case "delete" :
+                proxy.checkPermission(operation);
+                break;// déclenche checkAdmin
+        }
+    }
     @FXML
     void btnAddBookOnAction(ActionEvent event) throws IOException {
-        Navigation.imgPopUpBackground("addBookPopUpForm.fxml");
+        // ✅ Vérification proxy avant d'ouvrir le formulaire d'ajout
+        try {
+            checkAccess("save");
+            Navigation.imgPopUpBackground("addBookPopUpForm.fxml");
+        } catch (SecurityException e) {
+            showAccessDenied(e.getMessage());
+        }
     }
 
     @FXML
@@ -82,8 +110,6 @@ public class AdminBookManagementFormController implements Initializable {
     @FXML
     void txtSearchOnAction(ActionEvent event) throws IOException {
         if (validateSearch()) {
-
-            // idPattern retourne true = "pas un ID" → donc on inverse avec !
             if (!RegExPatterns.idPattern(txtSearch.getText())) {
                 searchContext.setStrategy(new SearchByBookId());
             } else {
@@ -104,7 +130,6 @@ public class AdminBookManagementFormController implements Initializable {
                 return;
             }
 
-            // Si rien trouvé, afficher l'alerte
             lblSearchAlert.setText("Invalid Id Or Name!!");
         }
         txtSearch.clear();
@@ -150,6 +175,10 @@ public class AdminBookManagementFormController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    // ✅ Affichage d'une alerte si accès refusé par le proxy
+    private void showAccessDenied(String message) {
+        lblSearchAlert.setText("Accès refusé : " + message);
     }
 
     @Override
