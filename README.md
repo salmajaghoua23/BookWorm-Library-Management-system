@@ -39,22 +39,17 @@ BookWorm is a comprehensive library management system built using native Hiberna
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/gayanukabulegoda/BookWorm-Library-Management-System.git
-
+https://github.com/salmajaghoua23/BookWorm-Library-Management-system.git
 2. Set up the MySQL database using the provided SQL scripts.
 
 3. Configure the database connection in the Hibernate configuration file (`hibernate.cfg.xml`).
 
 4. Run the application from your preferred Java IDE.
 
-## Figma Design
-Explore the system's design here: [BookWorm Figma Design](https://www.figma.com/community/file/1416800754483053647/bookworm-library-management-system)
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Contact
-For any questions or inquiries, feel free to connect with me via [LinkedIn](https://www.linkedin.com/in/gayanuka-bulegoda-2b993127a).
 
 ##
 <div align="center">
