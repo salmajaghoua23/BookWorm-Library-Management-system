@@ -74,7 +74,7 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Pane fx:id="AddUserPane" layoutX="1056.0" layoutY="24.0" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 12;">
+      <Pane fx:id="AddUserPane" layoutX="1056.0" layoutY="24.0" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: green; -fx-background-radius: 12;">
          <children>
             <Label fx:id="lblAddUser" layoutX="44.0" layoutY="12.0" text="Add User" textFill="WHITE">
                <font>

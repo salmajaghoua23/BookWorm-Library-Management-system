@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="72.0" prefWidth="389.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: black; -fx-border-radius: 12;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookWormLibraryManagementSystem.controller.admin.AdminDashboardAdminsBarFormController">
+<Pane prefHeight="72.0" prefWidth="389.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: green; -fx-border-radius: 12;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookWormLibraryManagementSystem.controller.admin.AdminDashboardAdminsBarFormController">
    <children>
       <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="336.0" layoutY="19.5" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -32,7 +32,7 @@
                   <Image url="@../assests/icon/adminIcon.png" />
                </image>
             </ImageView>
-            <Circle fill="#151619" layoutX="254.0" layoutY="51.5" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="#151619" layoutX="254.0" layoutY="51.5" radius="5.0" stroke="green" strokeType="INSIDE" strokeWidth="0.0" />
             <Label fx:id="lblStatus" layoutX="263.0" layoutY="44.5" text="Active">
                <font>
                   <Font size="10.0" />

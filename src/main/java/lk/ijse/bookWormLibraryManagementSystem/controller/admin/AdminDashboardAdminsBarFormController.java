@@ -2,6 +2,7 @@ package lk.ijse.bookWormLibraryManagementSystem.controller.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import lk.ijse.bookWormLibraryManagementSystem.projection.AdminProjection;
 import lk.ijse.bookWormLibraryManagementSystem.util.Navigation;
@@ -19,11 +20,13 @@ public class AdminDashboardAdminsBarFormController {
     @FXML
     private Label lblStatus;
 
+
     @FXML
     void btnViewAdminOnAction(ActionEvent event) throws IOException {
         ViewAdminPopUpFormController.adminId = Integer.parseInt(lblAdminId.getText());
         Navigation.imgPopUpBackground("viewAdminPopUpForm.fxml");
     }
+
 
     public void setData(AdminProjection projection) {
         lblAdminId.setText(String.valueOf(projection.getId()));

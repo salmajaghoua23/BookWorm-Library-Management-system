@@ -80,7 +80,7 @@
             <Line endX="5.5459442138671875" endY="42.91168212890625" layoutX="103.0" layoutY="63.0" startX="5.5459442138671875" startY="-47.99774169921875" />
          </children>
       </Pane>
-      <Pane fx:id="confirmPane" layoutX="824.0" layoutY="636.0" prefHeight="54.0" prefWidth="259.0" style="-fx-background-color: black; -fx-background-radius: 10;">
+      <Pane fx:id="confirmPane" layoutX="824.0" layoutY="636.0" prefHeight="54.0" prefWidth="259.0" style="-fx-background-color: green; -fx-background-radius: 10;">
          <children>
             <Label fx:id="lblConfirm" layoutX="87.0" layoutY="17.0" text="CONFIRM" textFill="WHITE">
                <font>

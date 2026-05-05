@@ -16,7 +16,7 @@
 <Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookWormLibraryManagementSystem.controller.user.UserReturnedBooksFormController">
    <children>
       <JFXButton layoutX="-71.0" text=" " />
-      <Pane fx:id="borrowedBooksPane" layoutX="24.0" layoutY="28.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 12;">
+      <Pane fx:id="borrowedBooksPane" layoutX="24.0" layoutY="28.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: green; -fx-background-radius: 12 0 0 12;">
          <children>
             <Label fx:id="lblBorrowedBooks" layoutX="59.0" layoutY="9.0" text="Borrowed Books" textFill="WHITE">
                <font>
@@ -90,7 +90,7 @@
       </Pane>
       <JFXButton layoutX="24.0" layoutY="28.0" onAction="#btnBorrowedBooksOnAction" onMouseEntered="#btnBorrowedBooksOnMouseEntered" onMouseExited="#btnBorrowedBooksOnMouseExited" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 12 0 0 12;" text=" " />
       <JFXButton layoutX="289.0" layoutY="28.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 0 12 12 0;" text=" " />
-      <Pane layoutX="1534.0" layoutY="93.0" prefHeight="812.5" prefWidth="121.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 0;">
+      <Pane layoutX="1534.0" layoutY="93.0" prefHeight="812.5" prefWidth="121.0" style="-fx-background-color: green; -fx-background-radius: 12 0 0 0;">
          <children>
             <Text fill="WHITE" layoutX="49.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="B O O K  WO R M" wrappingWidth="22.31420900038222">
                <font>

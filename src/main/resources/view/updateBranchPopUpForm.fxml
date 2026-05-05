@@ -47,7 +47,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="updatePane" layoutX="320.0" layoutY="391.0" prefHeight="54.0" prefWidth="259.0" style="-fx-background-color: black; -fx-background-radius: 10;">
+      <Pane fx:id="updatePane" layoutX="320.0" layoutY="391.0" prefHeight="54.0" prefWidth="259.0" style="-fx-background-color: green; -fx-background-radius: 10;">
          <children>
             <Label fx:id="lblUpdate" layoutX="93.0" layoutY="17.0" text="UPDATE" textFill="WHITE">
                <font>

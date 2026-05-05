@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -97,6 +98,9 @@ public class AdminGlobalFormController implements Initializable {
 
     @FXML
     private Pane usersPane;
+    @FXML
+    private Button btnClose;
+
 
     private static AdminGlobalFormController controller;
 
@@ -246,6 +250,10 @@ public class AdminGlobalFormController implements Initializable {
         } else {
             Navigation.imgPopUpBackground("adminSettingsPopUpForm.fxml");
         }
+    }
+    @FXML
+    private void closeApp() {
+        System.exit(0);
     }
 
     private void buttonUnSelected() {

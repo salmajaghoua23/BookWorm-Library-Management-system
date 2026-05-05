@@ -40,7 +40,7 @@
             <Line endX="3.136810302734375" endY="109.91000366210938" layoutX="24.0" layoutY="73.0" startX="3.136810302734375" startY="-52.51482391357422" />
          </children>
       </Pane>
-      <Circle layoutX="1295.0" layoutY="359.0" radius="300.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle layoutX="1295.0" layoutY="359.0" radius="300.0" stroke="GREEN" strokeType="INSIDE" />
       <Pane layoutX="52.0" layoutY="548.0" prefHeight="302.0" prefWidth="917.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <Text fx:id="textQuote" layoutX="104.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Embarking on the journey of reading fosters personal growth, nurturing a path towards excellence and the refinement of character.&quot;" wrappingWidth="739.4623107910156">
@@ -62,8 +62,8 @@
                   <Image url="@../assests/img/bookWormBadge.png" />
                </image>
             </ImageView>
-            <Circle fill="#3d3e3e" layoutX="187.0" layoutY="44.02" radius="12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Circle fill="#151619" layoutX="187.0" layoutY="107.02" radius="12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="#3d3e3e" layoutX="187.0" layoutY="44.02" radius="12.0" stroke="GREEN" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fill="#151619" layoutX="187.0" layoutY="107.02" radius="12.0" stroke="GREEN" strokeType="INSIDE" strokeWidth="0.0" />
             <Label layoutX="229.0" layoutY="32.0" text="Total Borrowed Books ">
                <font>
                   <Font size="22.0" />

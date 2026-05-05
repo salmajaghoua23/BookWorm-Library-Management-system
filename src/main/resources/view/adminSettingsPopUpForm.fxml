@@ -12,7 +12,7 @@
       <JFXButton layoutX="-135.0" text=" " />
       <Pane layoutX="8.0" layoutY="5.0" prefHeight="129.0" prefWidth="266.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #DDDDDD; -fx-border-radius: 12;">
          <children>
-            <Pane layoutX="5.0" layoutY="7.0" prefHeight="54.0" prefWidth="256.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: black; -fx-border-radius: 12;">
+            <Pane layoutX="5.0" layoutY="7.0" prefHeight="54.0" prefWidth="256.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: green; -fx-border-radius: 12;">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>

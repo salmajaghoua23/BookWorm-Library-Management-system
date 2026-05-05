@@ -30,7 +30,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Pane fx:id="returnBtnPane" layoutX="1310.0" layoutY="8.0" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: black; -fx-background-radius: 12;">
+      <Pane fx:id="returnBtnPane" layoutX="1310.0" layoutY="8.0" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color:green; -fx-background-radius: 12;">
          <children>
             <ImageView fx:id="returnBtnImg" fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>

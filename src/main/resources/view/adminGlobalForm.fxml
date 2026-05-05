@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="981.0" prefWidth="1745.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookWormLibraryManagementSystem.controller.admin.AdminGlobalFormController">
-   <children>
+    <children>
       <JFXButton layoutX="-29.0" layoutY="-3.0" text=" " />
       <Pane prefHeight="981.0" prefWidth="222.0" style="-fx-background-color: green;">
          <children>
@@ -19,7 +20,7 @@
                   <Image url="@../assests/img/bookWormLogo.png" />
                </image>
             </ImageView>
-            <Pane fx:id="catalogPane" layoutY="226.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
+            <Pane fx:id="catalogPane" layoutY="226.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: green;">
                <children>
                   <Label fx:id="lblCatalog" layoutX="85.0" layoutY="15.0" text="Catalog" textFill="WHITE">
                      <font>
@@ -32,7 +33,7 @@
                      </image>
                   </ImageView>
                </children></Pane>
-            <Pane fx:id="dashboardPane" layoutY="158.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
+            <Pane fx:id="dashboardPane" layoutY="158.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: green;">
                <children>
                   <Label fx:id="lblDashboard" layoutX="85.0" layoutY="15.0" text="Dashboard" textFill="WHITE">
                      <font>
@@ -46,7 +47,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane fx:id="booksPane" layoutY="294.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
+            <Pane fx:id="booksPane" layoutY="294.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: green;">
                <children>
                   <Label fx:id="lblBooks" layoutX="85.0" layoutY="15.0" text="Books" textFill="WHITE">
                      <font>
@@ -58,8 +59,9 @@
                         <Image url="@../assests/icon/booksIconWhite.png" />
                      </image>
                   </ImageView>
-               </children></Pane>
-            <Pane fx:id="usersPane" layoutY="362.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
+               </children>
+            </Pane>
+            <Pane fx:id="usersPane" layoutY="362.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: green;">
                <children>
                   <Label fx:id="lblUsers" layoutX="85.0" layoutY="15.0" text="Users" textFill="WHITE">
                      <font>
@@ -71,8 +73,9 @@
                         <Image url="@../assests/icon/usersIconWhite.png" />
                      </image>
                   </ImageView>
-               </children></Pane>
-            <Pane fx:id="branchesPane" layoutY="430.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
+               </children>
+            </Pane>
+            <Pane fx:id="branchesPane" layoutY="430.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: green;">
                <children>
                   <Label fx:id="lblBranches" layoutX="85.0" layoutY="15.0" text="Branches" textFill="WHITE">
                      <font>
@@ -84,8 +87,9 @@
                         <Image url="@../assests/icon/branchesIconWhite.png" />
                      </image>
                   </ImageView>
-               </children></Pane>
-            <Pane fx:id="logOutPane" layoutY="850.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
+               </children>
+            </Pane>
+            <Pane fx:id="logOutPane" layoutY="850.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color:green;">
                <children>
                   <Label fx:id="lblLogOut" layoutX="85.0" layoutY="15.0" text="Log Out" textFill="WHITE">
                      <font>
@@ -131,6 +135,15 @@
             </Label>
             <Label fx:id="lblDate" layoutX="1363.0" layoutY="39.0" text="Mar 02, 2024" />
          </children>
+          <Button fx:id="btnClose"
+                  text="X"
+                  layoutX="1110"
+                  layoutY="15"
+                  prefWidth="32"
+                  prefHeight="32"
+                  style="-fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6;"
+                  onAction="#closeApp"
+          />
       </Pane>
       <Pane fx:id="pagingPane" layoutX="223.0" layoutY="77.0" prefHeight="905.0" prefWidth="1522.0" visible="false" />
        <ImageView fx:id="imgTransparent"
