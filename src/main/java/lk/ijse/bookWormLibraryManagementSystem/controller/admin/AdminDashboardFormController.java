@@ -163,8 +163,5 @@ public class AdminDashboardFormController implements Initializable {
         // Notifier apres chargement
         List<TransactionDto> overdue = dashboardService.getAllOverDueBorrowers();
         overdue.forEach(dto -> manager.notifyOverdue(dto));
-
-
     }
-
 }

@@ -6,6 +6,6 @@ public class BorrowState implements TransactionState {
         context.incrementBorrowCount();
     }
     @Override public String getLabel()          { return "Total Borrowed Books"; }
-    @Override public String getPieChartColor()  { return "#3D3E3E"; }
+    @Override public String getPieChartColor()  { return "#008000"; }
 
 }

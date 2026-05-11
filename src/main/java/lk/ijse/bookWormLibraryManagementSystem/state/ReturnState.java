@@ -6,7 +6,7 @@ public class ReturnState implements TransactionState{
         context.incrementReturnCount();
     }
     @Override public String getLabel()          { return "Total Returned Books"; }
-    @Override public String getPieChartColor()  { return "#151619"; }
+    @Override public String getPieChartColor()  { return "#87d587"; }
 
 
 }
