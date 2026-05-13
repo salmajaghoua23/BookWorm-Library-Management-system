@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import lk.ijse.bookWormLibraryManagementSystem.AppInitializer;
 import lk.ijse.bookWormLibraryManagementSystem.util.DateTimeUtil;
 import lk.ijse.bookWormLibraryManagementSystem.util.Navigation;
 
@@ -114,10 +115,11 @@ public class UserGlobalFormController implements Initializable {
     }
 
     @FXML
-    void btnLogOutOnAction(ActionEvent event) throws IOException {
-        selectedButton(logOutPane, imgLogOut, "logOutIconBlack.png");
+    void btnLogOutOnAction(ActionEvent event) throws Exception {
+        /*selectedButton(logOutPane, imgLogOut, "logOutIconBlack.png");
         Navigation.close(event);
-        Navigation.switchNavigation("userSignInGlobalForm.fxml", event);
+        Navigation.switchNavigation("userSignInGlobalForm.fxml", event);*/
+        AppInitializer.loadScene("/view/userSignInGlobalForm.fxml");
     }
 
     @FXML
